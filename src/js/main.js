@@ -12,10 +12,8 @@ import {
 const searchForm = document.getElementById('search-form');
 const searchInput = searchForm.querySelector('input[name="search-text"]');
 
-// Ініціалізація SimpleLightbox
 initLightbox();
 
-// Налаштування iziToast
 iziToast.settings({
   position: 'topRight',
   timeout: 5000,
@@ -34,16 +32,13 @@ searchForm.addEventListener('submit', async event => {
     return;
   }
 
-  // Очищаємо попередні результати
   clearGallery();
 
-  // Показуємо лоадер
   showLoader();
 
   try {
     const data = await getImagesByQuery(query);
 
-    // Ховаємо лоадер
     hideLoader();
 
     if (!data.hits || data.hits.length === 0) {
@@ -55,10 +50,8 @@ searchForm.addEventListener('submit', async event => {
       return;
     }
 
-    // Показуємо результат
     createGallery(data.hits);
 
-    // Показуємо повідомлення про успішний пошук
     iziToast.success({
       title: 'Success',
       message: `Hooray! We found ${data.totalHits} images.`,
@@ -74,6 +67,5 @@ searchForm.addEventListener('submit', async event => {
     console.error('Error:', error);
   }
 
-  // Очищаємо поле вводу
   searchInput.value = '';
 });
