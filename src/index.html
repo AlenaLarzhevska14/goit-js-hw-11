@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Search</title>
-    <link rel="stylesheet" href="./css/styles.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.0.0/loader.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
     />
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <div class="container">
-      <header class="header">
-        <form class="form">
+    <header class="header">
+      <div class="container">
+        <form class="form" id="search-form">
           <label>
             <input
               type="text"
@@ -24,31 +24,18 @@
           </label>
           <button type="submit">Search</button>
         </form>
-      </header>
+      </div>
+    </header>
 
-      <main>
-        <div class="loader hidden" id="loader">
-          <div class="lds-default">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <p>Loading images...</p>
+    <main class="main">
+      <div class="container">
+        <div class="loader-container" id="loader">
+          <div class="loader"></div>
         </div>
-
         <ul class="gallery" id="gallery"></ul>
-      </main>
-    </div>
+      </div>
+    </main>
 
-    <script type="module" src=".src/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
