@@ -6,13 +6,10 @@ import {
   clearGallery,
   showLoader,
   hideLoader,
-  initLightbox,
 } from './js/render-functions.js';
 
 const searchForm = document.getElementById('search-form');
 const searchInput = searchForm.querySelector('input[name="search-text"]');
-
-initLightbox();
 
 iziToast.settings({
   position: 'topRight',
@@ -57,7 +54,6 @@ searchForm.addEventListener('submit', async event => {
       message: `Hooray! We found ${data.totalHits} images.`,
     });
   } catch (error) {
-    // Ховаємо лоадер
     hideLoader();
 
     iziToast.error({

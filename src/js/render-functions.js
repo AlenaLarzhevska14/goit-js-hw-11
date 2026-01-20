@@ -3,11 +3,15 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 let lightbox;
 
-export function initLightbox() {
-  lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
+function initOrRefreshLightbox() {
+  if (lightbox) {
+    lightbox.refresh();
+  } else {
+    lightbox = new SimpleLightbox('.gallery a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+    });
+  }
 }
 
 export function createGallery(images) {
@@ -50,14 +54,17 @@ export function createGallery(images) {
 
   galleryContainer.insertAdjacentHTML('beforeend', markup);
 
-  if (lightbox) {
-    lightbox.refresh();
-  }
+  initOrRefreshLightbox();
 }
 
 export function clearGallery() {
   const galleryContainer = document.getElementById('gallery');
   galleryContainer.innerHTML = '';
+
+  if (lightbox) {
+    lightbox.destroy();
+    lightbox = null;
+  }
 }
 
 export function showLoader() {
